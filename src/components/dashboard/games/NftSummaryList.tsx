@@ -38,7 +38,7 @@ const TokenSummaryList: React.FC<TokenSummaryListProps> = ({ tokens }) => {
   return (
     <Box p={4} boxShadow={3} mb={4}>
       <Typography variant="h4" gutterBottom>
-        Token Summary
+        NFT Summary
       </Typography>
       <TableContainer component={Paper}>
         <Table>
