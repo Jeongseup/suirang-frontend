@@ -3,17 +3,28 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Button, Grid, Typography } from '@mui/material';
 import { Box, Stack } from '@mui/system';
-import homeImg from 'public/assets/home.jpg';
+import homeImg from 'public/assets/home.png';
 
 import { config } from '@/config';
-import { Budget } from '@/components/dashboard/overview/budget';
-import { TasksProgress } from '@/components/dashboard/overview/tasks-progress';
-import { TotalCustomers } from '@/components/dashboard/overview/total-customers';
-import { TotalProfit } from '@/components/dashboard/overview/total-profit';
+import GameList from '@/components/dashboard/games/GameList';
 
 export const metadata = { title: `Overview | Dashboard | ${config.site.name}` } satisfies Metadata;
 
-export default function Page(): React.JSX.Element {
+const getServerSideProps = async () => {
+  const gamesResp = await fetch(`http://13.125.79.9:3300/games`);
+  const games = await gamesResp.json();
+
+  return games;
+};
+
+// const GameSummaryPage: React.FC<GameSummaryPageProps> = async () => {
+//   const { metadata, users } = await getServerSideProps(1);
+//   console.log(metadata);
+
+const Page: React.FC = async () => {
+  const games = await getServerSideProps();
+  console.log(games);
+
   return (
     <Stack>
       <Box>
@@ -26,8 +37,9 @@ export default function Page(): React.JSX.Element {
 
             {/* TODO */}
             <Typography variant="h5" paragraph>
-              Suirang is description for about our project.Here is description for about our project.Here is description
-              for project.Here is description for about our project.
+              Suirang aims to create a comprehensive platform that visualizes transaction activity and asset information
+              for various games within the web3 ecosystem. The platform enables users to easily check rankings and asset
+              statuses for each game, engage with the community, and participate in airdrop events.
             </Typography>
 
             {/* TODO */}
@@ -46,22 +58,11 @@ export default function Page(): React.JSX.Element {
           </Grid>
         </Grid>
       </Box>
-      <Box>
-        <Grid container spacing={3}>
-          <Grid lg={3} sm={6} xs={12}>
-            <Budget diff={12} trend="up" sx={{ height: '100%' }} value="$24k" />
-          </Grid>
-          <Grid lg={3} sm={6} xs={12}>
-            <TotalCustomers diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
-          </Grid>
-          <Grid lg={3} sm={6} xs={12}>
-            <TasksProgress sx={{ height: '100%' }} value={75.5} />
-          </Grid>
-          <Grid lg={3} sm={6} xs={12}>
-            <TotalProfit sx={{ height: '100%' }} value="$15k" />
-          </Grid>
-        </Grid>
+      <Box marginTop={10}>
+        <GameList games={games} />
       </Box>
     </Stack>
   );
-}
+};
+
+export default Page;
