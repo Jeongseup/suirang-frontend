@@ -35,7 +35,7 @@ const TransactionSummaryList: React.FC<TransactionSummaryListProps> = ({ transac
   return (
     <Box p={4} boxShadow={3} mb={4}>
       <Typography variant="h4" gutterBottom>
-        Coin Summary
+        Token Summary
       </Typography>
       <TableContainer component={Paper}>
         <Table>

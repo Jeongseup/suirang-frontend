@@ -28,10 +28,12 @@ interface UserSummaryListProps {
 }
 
 const UserSummaryList: React.FC<UserSummaryListProps> = ({ users }) => {
+  // console.log(users);
+
   return (
     <Box p={4} boxShadow={3} mb={4}>
       <Typography variant="h4" gutterBottom>
-        User Summary
+        User Ranking Summary
       </Typography>
       <TableContainer component={Paper}>
         <Table>
@@ -39,8 +41,8 @@ const UserSummaryList: React.FC<UserSummaryListProps> = ({ users }) => {
             <TableRow>
               <TableCell align="center">User</TableCell>
               <TableCell align="center">Transaction Count</TableCell>
-              <TableCell align="center">Token #1</TableCell>
-              <TableCell align="center">NFT #2</TableCell>
+              {/* <TableCell align="center">Token #1</TableCell> */}
+              {/* <TableCell align="center">NFT #2</TableCell> */}
               <TableCell align="center">Change the Ranking</TableCell>
             </TableRow>
           </TableHead>
@@ -62,10 +64,10 @@ const UserSummaryList: React.FC<UserSummaryListProps> = ({ users }) => {
                     {user.transactionCount}
                   </Typography>
                 </TableCell>
-                <TableCell align="center">{user.token}</TableCell>
-                <TableCell align="center">{user.nft}</TableCell>
+                {/* <TableCell align="center">{user.token}</TableCell> */}
+                {/* <TableCell align="center">{user.nft}</TableCell> */}
                 <TableCell align="center">
-                  {user.rankingChange === 'up' ? <FaArrowUp color="green" /> : <FaArrowDown color="red" />}
+                  {user.transactionCount % 2 === 0 ? <FaArrowUp color="green" /> : <FaArrowDown color="red" />}
                 </TableCell>
               </TableRow>
             ))}

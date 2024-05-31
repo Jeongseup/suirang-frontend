@@ -1,0 +1,16 @@
+{
+  "owner_address": "0xdb190c81577a1293cddafc6695d724cf0aff7ea0ff2f8d4f09353844a528457b",
+  "nft_object_id": "hyperspace",
+  "token_id": "0x9f8272ac229fcb189f107ee9265e2cc860c01801c6ca119e5558988cdfe33f3d",
+  "token_name": "0xee496a0cc04d06a345982ba6697c90c619020de9e274408c7819f787ff66e1a1::suifrens::SuiFren<0xee496a0cc04d06a345982ba6697c90c619020de9e274408c7819f787ff66e1a1::capy::Capy>",
+  "token_image_url": "0x94f32098287bc22ed359b79a28e3095b91ccc620cc90ec09239c712210ba5b42",
+  "token_description": "3320000000",
+  "token_receiver": "3320000000",
+  "event": {
+    "event_parsed_json": "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
+    "event_seq": "\"{\"\"id\"\":\"\"0x94f32098287bc22ed359b79a28e3095b91ccc620cc90ec09239c712210ba5b42\"\"",
+    "event_transaction_module": "\"\"kiosk\"\":\"\"0xbf195ccf9b0901728b3770334d0ac15cc1369be9c2b09fc3cfd0fa566559cdbe\"\"",
+    "event_type": "\"\"price\"\":\"\"3320000000\"\"}\"",
+    "event_bcs": "ItemPurchased"
+  }
+}
