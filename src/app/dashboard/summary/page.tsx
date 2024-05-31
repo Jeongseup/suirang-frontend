@@ -30,7 +30,7 @@ const getServerSideProps = async (id: Number) => {
 
 const GameSummaryPage: React.FC<GameSummaryPageProps> = async () => {
   const { metadata, users } = await getServerSideProps(1);
-  console.log(metadata, users);
+  console.log(metadata);
 
   return (
     <Stack spacing={3}>

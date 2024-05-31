@@ -15,6 +15,10 @@ interface MetadataProps {
     homePage: string;
     discord: string;
     twitter: string;
+    ranking: Number;
+    transactionCount: Number;
+    packageId: string[];
+    coinType: string;
   };
 }
 
@@ -41,22 +45,24 @@ const GameMetadata: React.FC<MetadataProps> = ({ metadata }) => {
             </Grid>
           </Box>
           {/* 뱃지 라인 */}
-          {/* <Box mb={4}>
+          <Box mb={4}>
             <Grid container spacing={2}>
               <Grid item lg={3} sm={6} xs={12}>
-                <Budget diff={12} trend="up" sx={{ height: '100%' }} value="$24k" />
+                <Budget diff={12} trend="up" sx={{ height: '100%' }} value={String(metadata.ranking)} />
               </Grid>
               <Grid item lg={3} sm={6} xs={12}>
-                <TotalCustomers diff={16} trend="down" sx={{ height: '100%' }} value="1.6k" />
+                <TotalCustomers
+                  diff={16}
+                  trend="up"
+                  sx={{ height: '100%' }}
+                  value={String(metadata.transactionCount)}
+                />
               </Grid>
               <Grid item lg={3} sm={6} xs={12}>
                 <TasksProgress sx={{ height: '100%' }} value={75.5} />
               </Grid>
-              <Grid item lg={3} sm={6} xs={12}>
-                <TotalProfit sx={{ height: '100%' }} value="$15k" />
-              </Grid>
             </Grid>
-          </Box> */}
+          </Box>
           {/* 아이콘 라인 */}
           <Box>
             <Grid container justifyContent="flex-end" alignItems="center">
