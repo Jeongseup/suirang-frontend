@@ -52,29 +52,9 @@ export function MainNav(): React.JSX.Element {
               Community
             </Link>
           </Stack>
-          <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-            <Tooltip title="Contacts">
-              <IconButton>
-                <UsersIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Notifications">
-              <Badge badgeContent={4} color="success" variant="dot">
-                <IconButton>
-                  <BellIcon />
-                </IconButton>
-              </Badge>
-            </Tooltip>
-            <Avatar
-              onClick={userPopover.handleOpen}
-              ref={userPopover.anchorRef}
-              src="/assets/avatar.png"
-              sx={{ cursor: 'pointer' }}
-            />
-          </Stack>
+          <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}></Stack>
         </Stack>
       </Box>
-      <UserPopover anchorEl={userPopover.anchorRef.current} onClose={userPopover.handleClose} open={userPopover.open} />
       <MobileNav
         onClose={() => {
           setOpenNav(false);

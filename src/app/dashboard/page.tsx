@@ -13,17 +13,11 @@ export const metadata = { title: `Overview | Dashboard | ${config.site.name}` } 
 const getServerSideProps = async () => {
   const gamesResp = await fetch(`http://13.125.79.9:3300/games`);
   const games = await gamesResp.json();
-
   return games;
 };
 
-// const GameSummaryPage: React.FC<GameSummaryPageProps> = async () => {
-//   const { metadata, users } = await getServerSideProps(1);
-//   console.log(metadata);
-
 const Page: React.FC = async () => {
   const games = await getServerSideProps();
-  console.log(games);
 
   return (
     <Stack>

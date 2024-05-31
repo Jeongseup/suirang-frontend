@@ -1,20 +1,28 @@
 import React from 'react';
 import { Stack } from '@mui/system';
 
-import gameData from '@/data/gameData_1.json';
+import CoinSummaryList from '@/components/dashboard/games/CoinSummaryList';
 import GameMetadata from '@/components/dashboard/games/GameMetadata';
 import UserSummaryList from '@/components/dashboard/games/UserSummaryList';
 
 interface GameSummaryPageProps {
   metadata: any;
   users: any[];
+  coins: any[];
 }
 
 const getServerSideProps = async (id: Number) => {
-  // http://13.125.79.9:3300/sui-web3/ranking/1?startDate=2024-05-01
-  // http://13.125.79.9:3300/sui-web3/asset-tracking/nft/{gameId}?page=1&pageSize=10&gameId=1&startDate=2024-05-01
-  // http://13.125.79.9:3300/sui-web3/event/{gameId}?page=1&pageSize=10&gameId=1&startDate=2024-05-01
-  // http://13.125.79.9:3300/sui-web3/asset-tracking/coin/{gameId}?page=1&pageSize=10&gameId=1&startDate=2024-05-01
+  // const nftResp = await fetch(
+  //   `http://13.125.79.9:3300/sui-web3/asset-tracking/nft/${id}?page=1&pageSize=10&gameId=1&startDate=2024-05-01`
+  // );
+
+  // const eventResp = await fetch(
+  //   `http://13.125.79.9:3300/sui-web3/event/${id}?page=1&pageSize=10&gameId=1&startDate=2024-05-01`
+  // );
+  const coinResp = await fetch(
+    `http://13.125.79.9:3300/sui-web3/asset-tracking/coin/${id}?page=1&pageSize=10&gameId=1&startDate=2024-05-01`
+  );
+  const coins = await coinResp.json();
 
   const gameResp = await fetch(`http://13.125.79.9:3300/games/${id}`);
   const gameMetaData = await gameResp.json();
@@ -25,17 +33,18 @@ const getServerSideProps = async (id: Number) => {
   return {
     metadata: gameMetaData,
     users: userRanks,
+    coins: coins,
   };
 };
 
 const GameSummaryPage: React.FC<GameSummaryPageProps> = async () => {
-  const { metadata, users } = await getServerSideProps(1);
-  console.log(metadata);
+  const { metadata, users, coins } = await getServerSideProps(1);
 
   return (
     <Stack spacing={3}>
       <GameMetadata metadata={metadata} />
       <UserSummaryList users={users} />
+      <CoinSummaryList transactions={coins} />
     </Stack>
   );
 };
