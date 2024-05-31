@@ -2,21 +2,14 @@
 
 import * as React from 'react';
 import { Link, Typography } from '@mui/material';
-import Avatar from '@mui/material/Avatar';
-import Badge from '@mui/material/Badge';
 import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
-import Tooltip from '@mui/material/Tooltip';
-import { Bell as BellIcon } from '@phosphor-icons/react/dist/ssr/Bell';
+import { GameController } from '@phosphor-icons/react/dist/ssr/GameController';
 import { List as ListIcon } from '@phosphor-icons/react/dist/ssr/List';
-import { MagnifyingGlass as MagnifyingGlassIcon } from '@phosphor-icons/react/dist/ssr/MagnifyingGlass';
-import { Users as UsersIcon } from '@phosphor-icons/react/dist/ssr/Users';
 
 import { usePopover } from '@/hooks/use-popover';
 
 import { MobileNav } from './mobile-nav';
-import { UserPopover } from './user-popover';
 
 export function MainNav(): React.JSX.Element {
   const [openNav, setOpenNav] = React.useState<boolean>(false);
@@ -35,23 +28,21 @@ export function MainNav(): React.JSX.Element {
           zIndex: 'var(--mui-zIndex-appBar)',
         }}
       >
-        <Stack
-          direction="row"
-          spacing={2}
-          sx={{ alignItems: 'center', justifyContent: 'space-between', minHeight: '64px', px: 2 }}
-        >
-          <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-            <ListIcon />
-            <Link href="/" className="font-bond">
-              Home
-            </Link>
-            <Link href="/dashboard/summary" className="font-bond text-3xl">
-              Game Summary
-            </Link>
-            <Link href="/dashboard/community" className="font-bond text-3xl">
-              Community
-            </Link>
-          </Stack>
+        <Stack direction="row" spacing={2} sx={{ alignItems: 'center', minHeight: '64px', px: 2 }}>
+          <GameController size={30} />
+
+          <Link href="/" variant="h5">
+            Home
+          </Link>
+
+          <Link href="/dashboard/summary" variant="h5">
+            Game Summary
+          </Link>
+
+          <Link href="/dashboard/community" variant="h5">
+            Community
+          </Link>
+
           <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}></Stack>
         </Stack>
       </Box>

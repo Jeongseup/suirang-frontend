@@ -40,7 +40,7 @@ const UserSummaryList: React.FC<UserSummaryListProps> = ({ users }) => {
           <TableHead>
             <TableRow>
               <TableCell align="center">User</TableCell>
-              <TableCell align="center">Transaction Count</TableCell>
+              <TableCell align="center">Event Count</TableCell>
               {/* <TableCell align="center">Token #1</TableCell> */}
               {/* <TableCell align="center">NFT #2</TableCell> */}
               <TableCell align="center">Change the Ranking</TableCell>

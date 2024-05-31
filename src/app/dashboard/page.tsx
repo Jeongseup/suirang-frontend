@@ -18,6 +18,7 @@ const getServerSideProps = async () => {
 
 const Page: React.FC = async () => {
   const games = await getServerSideProps();
+  // console.log(games);
 
   return (
     <Stack>
